@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg-base: #080d14;
+  --bg-surface: #0d1520;
+  --bg-elevated: #111d2e;
+  --border-subtle: #1a2535;
+  --border-default: #1e2d42;
+  --text-primary: #e2e8f0;
+  --text-secondary: #7a95b8;
+  --text-muted: #3d5472;
+  --accent: #10b981;
+  --accent-dim: rgba(16, 185, 129, 0.12);
+  --critical: #ef4444;
+  --critical-dim: rgba(239, 68, 68, 0.12);
+  --warning: #f59e0b;
+  --warning-dim: rgba(245, 158, 11, 0.12);
+  --route-risk: #10b981;
+  --route-normal: #64748b;
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg-base);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    selection: background rgba(16, 185, 129, 0.25);
+  }
+
+  #root {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+}
+
+/* ─── MapLibre Overrides ────────────────────────────────────── */
+.maplibregl-popup-content {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+.maplibregl-popup-tip {
+  display: none !important;
+}
+
+.maplibregl-popup-close-button {
+  display: none !important;
+}
+
+.maplibregl-ctrl-group {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border-default) !important;
+  border-radius: 6px !important;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4) !important;
+}
+
+.maplibregl-ctrl-group button {
+  background: var(--bg-elevated) !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary) !important;
+  width: 32px !important;
+  height: 32px !important;
+}
+
+.maplibregl-ctrl-group button:hover {
+  background: var(--bg-surface) !important;
+  color: var(--text-primary) !important;
+}
+
+.maplibregl-ctrl-group button span {
+  filter: invert(0.5) sepia(1) hue-rotate(180deg) brightness(1.5);
+}
+
+.maplibregl-ctrl-attrib {
+  background: rgba(8, 13, 20, 0.8) !important;
+  color: var(--text-muted) !important;
+  font-size: 9px !important;
+}
+
+.maplibregl-ctrl-attrib a {
+  color: var(--text-muted) !important;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────── */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-default) transparent;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--border-subtle);
+}
+
+/* ─── Pulse animations ──────────────────────────────────────── */
+@keyframes pulse-border {
+  0%, 100% { border-color: rgba(239, 68, 68, 0.6); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.15); }
+  50% { border-color: rgba(239, 68, 68, 0.9); box-shadow: 0 0 0 4px rgba(239, 68, 68, 0); }
+}
+
+.pulse-critical {
+  animation: pulse-border 2s ease-in-out infinite;
+}
+
+@keyframes route-draw {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.35s ease-out both;
+}
+
+/* ─── Operational ping ──────────────────────────────────────── */
+@keyframes op-ping {
+  0% { transform: scale(1); opacity: 0.8; }
+  70% { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.op-ping {
+  animation: op-ping 1.8s ease-out infinite;
+}

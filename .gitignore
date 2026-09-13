@@ -1,0 +1,37 @@
+# Environments and Secrets
+.env
+.env.*
+!.env.example
+secrets/
+credentials/
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.pyc
+venv/
+env/
+.pytest_cache/
+
+# Node & Frontend
+frontend/node_modules/
+node_modules/
+frontend/dist/
+dist/
+build/
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+
+# Data, State, and Models
+state.json
+dispatch.json
+*.log
+model.joblib
+
+# Obsolete root Node files
+/package.json
+/package-lock.json

@@ -1,0 +1,185 @@
+{
+  "selected_model": "Gradient Boosting Regressor",
+  "primary_metric": "RMSE",
+  "metrics": {
+    "Dummy (Mean Baseline)": {
+      "fold_rmse": [
+        0.48639907875899063,
+        0.44513424472062646,
+        0.4914476710947923,
+        0.43628634585351944,
+        0.5070844373174463
+      ],
+      "mean_rmse": 0.4732703555490751,
+      "std_rmse": 0.027588504871126827
+    },
+    "Linear Regression": {
+      "fold_rmse": [
+        1.1614680404495974,
+        0.4920908767157085,
+        0.5555962322263768,
+        0.919215993156769,
+        0.33626666332045124
+      ],
+      "mean_rmse": 0.6929275611737806,
+      "std_rmse": 0.3023702693590909
+    },
+    "Random Forest Regressor": {
+      "fold_rmse": [
+        0.1226200368664893,
+        0.6632841437137286,
+        0.28385024505751416,
+        0.2635640659989341,
+        0.5290687834784655
+      ],
+      "mean_rmse": 0.37247745502302637,
+      "std_rmse": 0.19556840869502676
+    },
+    "Gradient Boosting Regressor": {
+      "fold_rmse": [
+        0.13174022705365057,
+        0.3865001211932882,
+        0.27567654453118934,
+        0.2739399149413072,
+        0.34718853623978874
+      ],
+      "mean_rmse": 0.2830090687918448,
+      "std_rmse": 0.08700308030578305
+    }
+  },
+  "feature_information": {
+    "raw_feature_columns": [
+      "disaster_type",
+      "alert_level_ordinal",
+      "severity",
+      "distance_to_center_km",
+      "distance_to_boundary_km",
+      "road_length_m",
+      "road_type"
+    ],
+    "numeric_features": [
+      "alert_level_ordinal",
+      "severity",
+      "distance_to_center_km",
+      "distance_to_boundary_km",
+      "road_length_m"
+    ],
+    "categorical_features": [
+      "disaster_type",
+      "road_type"
+    ],
+    "transformed_feature_columns": [
+      "numeric__alert_level_ordinal",
+      "numeric__severity",
+      "numeric__distance_to_center_km",
+      "numeric__distance_to_boundary_km",
+      "numeric__road_length_m",
+      "categorical__disaster_type_EQ",
+      "categorical__disaster_type_FL",
+      "categorical__disaster_type_TC",
+      "categorical__disaster_type_WF",
+      "categorical__road_type_bridleway",
+      "categorical__road_type_construction",
+      "categorical__road_type_cycleway",
+      "categorical__road_type_footway",
+      "categorical__road_type_living_street",
+      "categorical__road_type_motorway",
+      "categorical__road_type_motorway_link",
+      "categorical__road_type_path",
+      "categorical__road_type_primary",
+      "categorical__road_type_proposed",
+      "categorical__road_type_residential",
+      "categorical__road_type_secondary",
+      "categorical__road_type_service",
+      "categorical__road_type_steps",
+      "categorical__road_type_tertiary",
+      "categorical__road_type_tertiary_link",
+      "categorical__road_type_track",
+      "categorical__road_type_trunk",
+      "categorical__road_type_trunk_link",
+      "categorical__road_type_unclassified"
+    ],
+    "excluded_columns": [
+      "event_id",
+      "fraction_inside_polygon",
+      "road_impact_score",
+      "road_inside_polygon"
+    ],
+    "target_column": "road_impact_score",
+    "leakage_check_passed": true
+  },
+  "training_metadata": {
+    "trained_at_utc": "2026-09-11T04:55:36.772958+00:00",
+    "data_file": "training_data.csv",
+    "grouping_column": "event_id",
+    "cross_validation": "GroupKFold",
+    "requested_splits": 5,
+    "actual_splits": 5,
+    "random_state": 42,
+    "target_definition": "road length inside the GDACS affected polygon divided by total road length; point-only events use the documented weak proxy label",
+    "dataset_statistics": {
+      "row_count": 1091,
+      "unique_event_count": 14,
+      "disaster_type_distribution": {
+        "WF": 500,
+        "FL": 306,
+        "EQ": 185,
+        "TC": 100
+      },
+      "samples_per_event": {
+        "1001297": 50,
+        "1001305": 50,
+        "1029958": 100,
+        "1029987": 100,
+        "1030252": 100,
+        "1030410": 100,
+        "1030534": 100,
+        "1104081": 56,
+        "1104121": 100,
+        "1104123": 50,
+        "1104124": 100,
+        "1557236": 35,
+        "1558059": 50,
+        "1562260": 100
+      },
+      "target_distribution": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.33903826942119364,
+        "std": 0.4690852794866612,
+        "zero_count": 710,
+        "one_count": 354,
+        "quantiles": {
+          "p25": 0.0,
+          "p50": 0.0,
+          "p75": 1.0
+        }
+      },
+      "missing_values": {
+        "event_id": 0,
+        "disaster_type": 0,
+        "alert_level_ordinal": 0,
+        "severity": 0,
+        "distance_to_center_km": 0,
+        "distance_to_boundary_km": 0,
+        "road_length_m": 0,
+        "road_type": 0,
+        "road_impact_score": 0
+      },
+      "unique_value_counts": {
+        "event_id": 14,
+        "disaster_type": 4,
+        "alert_level_ordinal": 2,
+        "severity": 11,
+        "distance_to_center_km": 1091,
+        "distance_to_boundary_km": 1091,
+        "road_length_m": 1091,
+        "road_type": 20,
+        "road_impact_score": 29
+      },
+      "constant_columns": [],
+      "near_constant_features": [],
+      "proxy_label_row_count": 0
+    }
+  }
+}
